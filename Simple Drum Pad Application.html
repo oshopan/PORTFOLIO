@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum Pad</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .container {
+            text-align: center;
+        }
+        .drum-pad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .pad {
+            width: 80px;
+            height: 80px;
+            font-size: 18px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 8px;
+        }
+        .pad:hover {
+            opacity: 0.8;
+        }
+        .pad:active, .pad.active {
+            transform: scale(0.95);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #effectsButton {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        #effectsButton:hover {
+            background-color: #45a049;
+        }
+        #effectsButton.active {
+            background-color: #e91e63;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Drum Pad</h1>
+        <div class="drum-pad" id="drumPad"></div>
+        <button id="effectsButton">Effects: OFF</button>
+    </div>
+
+    <script>
+        const drumPad = document.getElementById('drumPad');
+        const effectsButton = document.getElementById('effectsButton');
+        const synth = new Tone.PolySynth(Tone.Synth).toDestination();
+        
+        // Effects chain
+        const distortion = new Tone.Distortion(0.8).toDestination();
+        const reverb = new Tone.Reverb(2).toDestination();
+        let effectsOn = false;
+
+        const sounds = [
+            { key: 'Q', note: 'C4', color: '#FF6B6B' },
+            { key: 'W', note: 'D4', color: '#4ECDC4' },
+            { key: 'E', note: 'E4', color: '#45B7D1' },
+            { key: 'R', note: 'F4', color: '#F7B267' },
+            { key: 'A', note: 'G4', color: '#6B48FF' },
+            { key: 'S', note: 'A4', color: '#3DDC97' },
+            { key: 'D', note: 'B4', color: '#FF7F50' },
+            { key: 'F', note: 'C5', color: '#FF69B4' },
+            { key: 'Z', note: 'D5', color: '#7B68EE' },
+            { key: 'X', note: 'E5', color: '#20B2AA' },
+            { key: 'C', note: 'F5', color: '#FFA07A' },
+            { key: 'V', note: 'G5', color: '#00CED1' },
+            { key: '1', note: 'A5', color: '#9370DB' },
+            { key: '2', note: 'B5', color: '#32CD32' },
+            { key: '3', note: 'C6', color: '#FF6347' },
+            { key: '4', note: 'D6', color: '#1E90FF' },
+        ];
+
+        sounds.forEach(({ key, note, color }) => {
+            const pad = document.createElement('button');
+            pad.textContent = key;
+            pad.className = 'pad';
+            pad.dataset.note = note;
+            pad.dataset.key = key;
+            pad.style.backgroundColor = color;
+            drumPad.appendChild(pad);
+        });
+
+        function toggleEffects() {
+            effectsOn = !effectsOn;
+            if (effectsOn) {
+                synth.disconnect();
+                synth.connect(distortion);
+                synth.connect(reverb);
+                effectsButton.textContent = 'Effects: ON';
+                effectsButton.classList.add('active');
+            } else {
+                synth.disconnect();
+                synth.toDestination();
+                effectsButton.textContent = 'Effects: OFF';
+                effectsButton.classList.remove('active');
+            }
+        }
+
+        function playSound(note, pad) {
+            synth.triggerAttackRelease(note, "8n");
+            pad.classList.add('active');
+            setTimeout(() => pad.classList.remove('active'), 100);
+        }
+
+        drumPad.addEventListener('mousedown', (e) => {
+            if (e.target.classList.contains('pad')) {
+                const note = e.target.dataset.note;
+                playSound(note, e.target);
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            const pad = document.querySelector(`.pad[data-key="${e.key.toUpperCase()}"]`);
+            if (pad && !e.repeat) {
+                const note = pad.dataset.note;
+                playSound(note, pad);
+            }
+        });
+
+        effectsButton.addEventListener('click', toggleEffects);
+
+        // Start audio context on user interaction
+        document.addEventListener('click', async () => {
+            await Tone.start();
+            console.log('Audio is ready');
+        }, { once: true });
+    </script>
+</body>
+</html>

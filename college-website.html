@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osho Pandey University</title>
+    <style>
+        :root {
+            --primary: #83168d;
+            --secondary: #0ea5e9;
+            --accent: #f59e0b;
+            --light: #f1f5f9;
+            --dark: #1e293b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: var(--light);
+            padding: 4rem 0;
+            text-align: center;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/500');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #e69008;
+            transform: translateY(-3px);
+        }
+        
+        /* Programs Section */
+        .programs {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .program-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .program-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        .program-content {
+            padding: 1.5rem;
+        }
+        
+        .program-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        /* Campus Life Section */
+        .campus-life {
+            padding: 4rem 0;
+            background-color: var(--light);
+        }
+        
+        .campus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .campus-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .campus-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        /* News Section */
+        .news {
+            padding: 4rem 0;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .news-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Admissions Section */
+        .admissions {
+            padding: 4rem 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .admissions .section-title {
+            color: white;
+        }
+        
+        .admissions p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">🏛️</span>
+                <span>Osho Pandey University</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Programs</a></li>
+                    <li><a href="#">Admissions</a></li>
+                    <li><a href="#">Campus Life</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Welcome to Osho Pandey University</h1>
+            <p>Empowering minds, inspiring futures. Join our diverse community of scholars and innovators dedicated to excellence and positive change.</p>
+            <a href="#" class="btn">Apply Now</a>
+            <a href="#" class="btn" style="background-color: var(--primary); margin-left: 10px;">Request Info</a>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs">
+        <div class="container">
+            <h2 class="section-title">Our Academic Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="/api/placeholder/300/200" alt="Business program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Business & Economics</h3>
+                        <p>Develop essential skills for the global marketplace with our comprehensive business programs focused on real-world applications and ethical leadership.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="/api/placeholder/300/200" alt="Engineering program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Engineering & Technology</h3>
+                        <p>Innovation starts here. Our engineering programs combine cutting-edge research with practical applications to solve tomorrow's challenges.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="/api/placeholder/300/200" alt="Arts program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Arts & Humanities</h3>
+                        <p>Explore human creativity and expression through our diverse arts and humanities programs that foster critical thinking and cultural understanding.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Life Section -->
+    <section class="campus-life">
+        <div class="container">
+            <h2 class="section-title">Campus Life</h2>
+            <div class="campus-grid">
+                <div class="campus-card">
+                    <div class="campus-icon">🏠</div>
+                    <h3>Housing</h3>
+                    <p>Comfortable, modern residences with vibrant community spaces designed for both study and social activities.</p>
+                </div>
+                <div class="campus-card">
+                    <div class="campus-icon">🏆</div>
+                    <h3>Athletics</h3>
+                    <p>Championship-winning teams and state-of-the-art facilities for both competitive athletes and fitness enthusiasts.</p>
+                </div>
+                <div class="campus-card">
+                    <div class="campus-icon">👥</div>
+                    <h3>Student Organizations</h3>
+                    <p>Over 200 clubs and organizations to pursue your passions, develop leadership skills, and build lasting connections.</p>
+                </div>
+                <div class="campus-card">
+                    <div class="campus-icon">🎭</div>
+                    <h3>Arts & Culture</h3>
+                    <p>Year-round performances, exhibitions, and cultural events that enrich campus life and connect to global perspectives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news">
+        <div class="container">
+            <h2 class="section-title">Latest News</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="/api/placeholder/300/200" alt="Research news">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">April 12, 2025</div>
+                        <h3>Breakthrough Research in Clean Energy</h3>
+                        <p>Osho Pandey University researchers develop new solar technology that increases efficiency by 30%, potentially revolutionizing renewable energy adoption.</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="/api/placeholder/300/200" alt="Award news">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">April 5, 2025</div>
+                        <h3>Professor Chen Wins National Science Award</h3>
+                        <p>Chemistry Department Chair Dr. Sarah Chen recognized for outstanding contributions to molecular research and educational innovation.</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="/api/placeholder/300/200" alt="Student news">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">March 28, 2025</div>
+                        <h3>Students Launch Community Outreach Initiative</h3>
+                        <p>A team of Osho Pandey undergraduates create a successful literacy program now operating in 15 local elementary schools.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section class="admissions">
+        <div class="container">
+            <h2 class="section-title">Join Our Community</h2>
+            <p>Begin your journey at Osho Pandey University. Our admissions team is ready to guide you through the application process and help you discover the opportunities that await.</p>
+            <a href="#" class="btn">Undergraduate Admissions</a>
+            <a href="#" class="btn" style="background-color: var(--primary); margin-left: 10px;">Graduate Admissions</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Academic Calendar</a></li>
+                        <li><a href="#">Library</a></li>
+                        <li><a href="#">Campus Map</a></li>
+                        <li><a href="#">Directory</a></li>
+                        <li><a href="#">Career Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Admissions</h3>
+                    <ul>
+                        <li><a href="#">Apply Online</a></li>
+                        <li><a href="#">Financial Aid</a></li>
+                        <li><a href="#">Scholarships</a></li>
+                        <li><a href="#">Visit Campus</a></li>
+                        <li><a href="#">International Students</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Student Portal</a></li>
+                        <li><a href="#">Faculty & Staff</a></li>
+                        <li><a href="#">Alumni Network</a></li>
+                        <li><a href="#">Research Publications</a></li>
+                        <li><a href="#">Support Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>123 University Avenue<br>
+                    Pandey City, PC 12345</p>
+                    <p>Phone: (555) 123-4567<br>
+                    Email: info@oshopandeyuniversity.edu</p>
+                    <div class="social-icons">
+                        <a href="#">📘</a>
+                        <a href="#">📱</a>
+                        <a href="#">📷</a>
+                        <a href="#">📺</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Osho Pandey University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

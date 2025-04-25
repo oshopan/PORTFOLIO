@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeRush - Typing Speed Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            width: 100%;
+            background-color: #4c52af;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .typing-area {
+            margin-bottom: 2rem;
+        }
+        #text-display {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            min-height: 150px;
+        }
+        #text-display span {
+            position: relative;
+        }
+        #text-display span.current {
+            background-color: #e0e0ff;
+        }
+        #text-display span.correct {
+            color: #43a047;
+        }
+        #text-display span.incorrect {
+            color: #e53935;
+            text-decoration: underline;
+        }
+        #user-input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        #user-input:focus {
+            outline: none;
+            border-color: #4c52af;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        button {
+            background-color: #4c52af;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #3a3f8c;
+        }
+        button:disabled {
+            background-color: #9e9e9e;
+            cursor: not-allowed;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4c52af;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #757575;
+        }
+        .timer {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        footer {
+            margin-top: auto;
+            width: 100%;
+            background-color: #e9e9e9;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TypeRush</h1>
+        <p>Test your typing speed and accuracy</p>
+    </header>
+
+    <div class="container">
+        <div class="controls">
+            <button id="start-btn">Start Test</button>
+            <button id="reset-btn" disabled>Reset</button>
+        </div>
+
+        <div class="timer" id="timer">00:00</div>
+
+        <div class="typing-area">
+            <div id="text-display"></div>
+            <textarea id="user-input" placeholder="The test will begin when you start typing..." disabled></textarea>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" id="wpm">0</div>
+                <div class="stat-label">WPM</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="accuracy">100%</div>
+                <div class="stat-label">Accuracy</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="cpm">0</div>
+                <div class="stat-label">CPM</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>TypeRush - Improve your typing skills with regular practice</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textDisplay = document.getElementById('text-display');
+            const userInput = document.getElementById('user-input');
+            const startButton = document.getElementById('start-btn');
+            const resetButton = document.getElementById('reset-btn');
+            const timerDisplay = document.getElementById('timer');
+            const wpmDisplay = document.getElementById('wpm');
+            const accuracyDisplay = document.getElementById('accuracy');
+            const cpmDisplay = document.getElementById('cpm');
+
+            let timer;
+            let seconds = 0;
+            let isTyping = false;
+            let currentWordIndex = 0;
+            let correctChars = 0;
+            let totalChars = 0;
+            let startTime;
+
+            const textSamples = [
+                "The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs. How vexingly quick daft zebras jump! Bright vixens jump; dozy fowl quack. Sphinx of black quartz, judge my vow.",
+                "Programming is the process of creating a set of instructions that tell a computer how to perform a task. Programming can be done using a variety of computer programming languages, such as JavaScript, Python, and C++.",
+                "The sun slowly set over the horizon, casting a warm golden glow across the tranquil lake. Birds chirped their evening songs as they returned to their nests. The gentle breeze rustled through the leaves, creating a soothing melody.",
+                "Success is not final, failure is not fatal: it is the courage to continue that counts. The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle.",
+                "Artificial intelligence is the simulation of human intelligence processes by machines, especially computer systems. These processes include learning, reasoning, and self-correction. AI is being used in various fields such as healthcare, finance, and transportation."
+            ];
+
+            // Initialize
+            function init() {
+                startButton.addEventListener('click', startTest);
+                resetButton.addEventListener('click', resetTest);
+                userInput.addEventListener('input', checkInput);
+            }
+
+            // Start the test
+            function startTest() {
+                const randomIndex = Math.floor(Math.random() * textSamples.length);
+                const selectedText = textSamples[randomIndex];
+                
+                // Create spans for each character
+                textDisplay.innerHTML = '';
+                selectedText.split('').forEach(char => {
+                    const span = document.createElement('span');
+                    span.textContent = char;
+                    textDisplay.appendChild(span);
+                });
+                
+                // Highlight the first character
+                textDisplay.children[0].classList.add('current');
+                
+                // Reset statistics
+                wpmDisplay.textContent = '0';
+                accuracyDisplay.textContent = '100%';
+                cpmDisplay.textContent = '0';
+                
+                // Enable user input
+                userInput.disabled = false;
+                userInput.value = '';
+                userInput.focus();
+                
+                // Start timer
+                seconds = 0;
+                timerDisplay.textContent = '00:00';
+                startButton.disabled = true;
+                resetButton.disabled = false;
+                
+                isTyping = false;
+                currentWordIndex = 0;
+                correctChars = 0;
+                totalChars = 0;
+            }
+
+            // Reset the test
+            function resetTest() {
+                clearInterval(timer);
+                textDisplay.innerHTML = '';
+                userInput.value = '';
+                userInput.disabled = true;
+                startButton.disabled = false;
+                resetButton.disabled = true;
+                wpmDisplay.textContent = '0';
+                accuracyDisplay.textContent = '100%';
+                cpmDisplay.textContent = '0';
+                timerDisplay.textContent = '00:00';
+                seconds = 0;
+                isTyping = false;
+            }
+
+            // Check user input against the text
+            function checkInput() {
+                if (!isTyping) {
+                    startTime = new Date();
+                    startTimer();
+                    isTyping = true;
+                }
+                
+                const words = textDisplay.textContent.split(' ');
+                const input = userInput.value;
+                
+                // Mark characters as correct or incorrect
+                for (let i = 0; i < textDisplay.children.length; i++) {
+                    textDisplay.children[i].classList.remove('current', 'correct', 'incorrect');
+                    
+                    if (i < input.length) {
+                        if (input[i] === textDisplay.children[i].textContent) {
+                            textDisplay.children[i].classList.add('correct');
+                        } else {
+                            textDisplay.children[i].classList.add('incorrect');
+                        }
+                    }
+                }
+                
+                // Highlight current character
+                if (input.length < textDisplay.children.length) {
+                    textDisplay.children[input.length].classList.add('current');
+                }
+                
+                // Calculate statistics
+                totalChars = input.length;
+                correctChars = 0;
+                
+                for (let i = 0; i < input.length; i++) {
+                    if (i < textDisplay.children.length && input[i] === textDisplay.children[i].textContent) {
+                        correctChars++;
+                    }
+                }
+                
+                updateStats();
+                
+                // Check if test is complete
+                if (input.length === textDisplay.children.length) {
+                    finishTest();
+                }
+            }
+
+            // Start the timer
+            function startTimer() {
+                timer = setInterval(() => {
+                    seconds++;
+                    const minutes = Math.floor(seconds / 60);
+                    const remainingSeconds = seconds % 60;
+                    timerDisplay.textContent = 
+                        (minutes < 10 ? '0' : '') + minutes + ':' + 
+                        (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+                    
+                    // Update stats every second
+                    updateStats();
+                }, 1000);
+            }
+
+            // Update statistics
+            function updateStats() {
+                const timeElapsed = (new Date() - startTime) / 1000 / 60; // in minutes
+                
+                // Calculate WPM: (characters typed / 5) / time in minutes
+                const wpm = Math.round((totalChars / 5) / timeElapsed) || 0;
+                wpmDisplay.textContent = wpm;
+                
+                // Calculate accuracy
+                const accuracy = totalChars > 0 ? Math.round((correctChars / totalChars) * 100) : 100;
+                accuracyDisplay.textContent = accuracy + '%';
+                
+                // Calculate CPM: characters per minute
+                const cpm = Math.round(totalChars / timeElapsed) || 0;
+                cpmDisplay.textContent = cpm;
+            }
+
+            // Finish the test
+            function finishTest() {
+                clearInterval(timer);
+                userInput.disabled = true;
+                updateStats(); // Final update
+            }
+
+            // Initialize the app
+            init();
+        });
+    </script>
+</body>
+</html>

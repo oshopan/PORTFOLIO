@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osho Pandey - Electronics & Communication Engineer</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0066cc;
+            --accent-color: #0099ff;
+            --text-color: #333333;
+            --light-gray: #f5f5f5;
+            --border-color: #dddddd;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        section {
+            padding: 2rem 0;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.9)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .about-image {
+            <img src="ChatGPT Image Apr 23, 2025, 02_33_26 PM.png" width=" 500" height="200" alt="Cyber Security Analysis">
+
+            flex: 0 0 300px;
+        }
+
+        .about-image img {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .contact-info {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--accent-color);
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .experience-company {
+            font-weight: 500;
+        }
+
+        .experience-date {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .experience-description ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+
+        /* Education Section */
+        .education-item {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .education-institution {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .education-degree {
+            font-weight: 500;
+        }
+
+        .education-date {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: var(--border-color);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-form {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info-card {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info-card h3 {
+            color: var(--white);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-item svg {
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            color: var(--primary-color);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+
+            .nav-menu li:first-child {
+                margin-left: 0;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                flex: 0 0 100%;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header, .education-header {
+                flex-direction: column;
+            }
+
+            .experience-date, .education-date {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">OSHO PANDEY</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>OSHO PANDEY</h1>
+            <p>Electronics & Communication Engineering Student | Cyber Security Enthusiast</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="vlcsnap-2024-04-24-23h15m03s859 - Copy.png" width="300" height="300" alt="Osho Pandey">
+            </div>
+            <div class="about-text">
+                <p>I am a B.Tech student in Electronics and Communication Engineering at Bihar Engineering University, Patna. I have experience in telecommunications, IT, and renewable energy, with skills in C++, C, HTML, CSS, among others.</p>
+                <p>I am passionate about personal growth, continuous learning, and making a positive impact. I hold a certification in Python and am open to new opportunities for collaboration and professional development.</p>
+                
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><strong>Address:</strong> Kaimur Bhabua, Bihar</p>
+                    <p><strong>Phone:</strong> +91 7667515387</p>
+                    <p><strong>Email:</strong> oshopandey76@gmail.com</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/osho-pandey-connect/" target="_blank">linkedin.com/in/osho-pandey-connect/</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio" style="padding: 40px; background-color: #f9f9f9;">
+        <div style="max-width: 900px; margin: auto; text-align: center;">
+          <h2>IOT Based Electric Vehicle Battery Management System</h2>
+          <p><strong>Team Members:</strong> Osho Pandey</p>
+          <p><strong>Guided by:</strong> Prof. Sushant Kumar</p>
+          <img src="Screenshot 2025-04-24 155736.png" alt="BMS Project Image" style="width: 100%; max-width: 600px; border-radius: 10px; margin: 20px 0;" />
+          
+          <h3>Overview</h3>
+          <p>This project tackles EV battery safety through real-time monitoring and multi-level cooling mechanisms to prevent overheating and potential hazards like battery explosions.</p>
+      
+          <h3>Features</h3>
+          <ul style="text-align: left; display: inline-block;">
+            <li>Real-time monitoring via mobile app</li>
+            <li>Alarm and notification at 75°C</li>
+            <li>Air cooling at 80°C</li>
+            <li>Fluid cooling at 85°C</li>
+            <li>System shutdown at 90°C</li>
+            <li>Automated stepwise restoration</li>
+          </ul>
+      
+          <p><strong>Tools & Components:</strong> ESP8266, DHT-11, Relay Units, Cooling Fan, Fluid Pump, MOSFETs, etc.</p>
+          
+          <p><a href="IOT_BMS by SignalCraft ORI 1.pdf" target="_blank" style="color: #007BFF;">View Full Report (PDF)</a></p>
+        </div>
+      </section>
+      
+
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <h2>Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <div class="skill-item">
+                    <div class="skill-name">C</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">C++</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Python</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Java</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Web Technologies</h3>
+                <div class="skill-item">
+                    <div class="skill-name">HTML</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">CSS</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">JavaScript</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Tools & Platforms</h3>
+                <div class="skill-item">
+                    <div class="skill-name">VS Code</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">MATLAB</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Arduino</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Qt</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 65%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Specialized Skills</h3>
+                <div class="skill-item">
+                    <div class="skill-name">Embedded Systems</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Microcontroller Programming</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">PCB Design</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="container">
+        <h2>Work Experience</h2>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <h3 class="experience-title">Cyber Security Intern</h3>
+                <span class="experience-date">March 10, 2023 – April 6, 2023</span>
+            </div>
+            <p class="experience-company">Reliance Industries Ltd, e-Learning Division</p>
+            <div class="experience-description">
+                <ul>
+                    <li>Completed a four-week online internship on Cyber Security.</li>
+                    <li>Gained expertise in vulnerabilities, social engineering, human errors, financial cost of security breaches, and computer protection.</li>
+                    <li>Achieved 94% in the final assessment, recognized as a top performer.</li>
+                    <li>Developed knowledge of the Cyber Security job market and industry practices.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <h3 class="experience-title">Python Programming Intern</h3>
+                <span class="experience-date">January 12, 2023 – February 24, 2023</span>
+            </div>
+            <p class="experience-company">DeezNodez (AICTE Approved)</p>
+            <div class="experience-description">
+                <ul>
+                    <li>Completed a 6-week online internship focused on Python Programming.</li>
+                    <li>Acquired skills in Python basics, data types, control statements, OOPs concepts, and database integration.</li>
+                    <li>Achieved 97% in the final assessment, recognized as a top performer.</li>
+                    <li>Developed problem-solving abilities and decision-making skills in programming.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <h3 class="experience-title">Introduction to Computers Training</h3>
+                <span class="experience-date">December 30th, 2022</span>
+            </div>
+            <p class="experience-company">Spoken Tutorial Project, IIT Bombay</p>
+            <div class="experience-description">
+                <ul>
+                    <li>Successfully completed a training program organized by the Spoken Tutorial Project, IIT Bombay, in collaboration with Government Engineering College, Kaimur.</li>
+                    <li>Gained foundational knowledge in computer operations and applications.</li>
+                    <li>Passed an online exam as part of the certification process.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="container">
+        <h2>Education</h2>
+        
+        <div class="education-item">
+            <div class="education-header">
+                <h3 class="education-institution">Bihar Engineering University, Patna</h3>
+                <span class="education-date">Expected Graduation: June 2026</span>
+            </div>
+            <p class="education-degree">Bachelor of Technology in Electronics and Communication Engineering</p>
+            <p><strong>Relevant Coursework:</strong> Digital Electronics, Microprocessors, Communication Systems, VLSI Design</p>
+        </div>
+
+        <div class="education-item">
+            <div class="education-header">
+                <h3 class="education-institution">Gram Bharti College, Ramgarh Kaimur Bihar (BBSB)</h3>
+                <span class="education-date">2021</span>
+            </div>
+            <p class="education-degree">Class 12 (Science Stream)</p>
+            <p><strong>Percentage:</strong> 51</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2>Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="ChatGPT Image Apr 23, 2025, 02_33_26 PM.png" width=" 500" height="200" alt="Cyber Security Analysis">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Cyber Security Analysis</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Cyber Security</span>
+                        <span class="project-tag">Risk Assessment</span>
+                    </div>
+                    <p>A comprehensive analysis of modern cyber threats and protection methods developed during the Reliance Industries internship.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="ChatGPT Image Apr 24, 2025, 03_13_04 PM.png" width=" 500" height="200" alt="Python Database Application">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Python Database Application</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Database</span>
+                        <span class="project-tag">OOP</span>
+                    </div>
+                    <p>A database management application developed using Python with OOP concepts and database integration during the DeezNodez internship.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="ChatGPT Image Apr 24, 2025, 03_17_44 PM.png" width=" 500" height="200" alt="Microcontroller-based Project">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Home Automation System</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Embedded Systems</span>
+                        <span class="project-tag">Arduino</span>
+                        <span class="project-tag">IoT</span>
+                    </div>
+                    <p>A smart home automation system developed using microcontrollers, focusing on energy efficiency and user convenience.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="ChatGPT Image Apr 24, 2025, 03_44_31 PM.png" width=" 500" height="200" alt="PCB Design Project">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Custom PCB Design</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">PCB Design</span>
+                        <span class="project-tag">Electronics</span>
+                    </div>
+                    <p>A custom-designed PCB for an electronics project, demonstrating layout design, component selection, and fabrication knowledge.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="resume">
+        <h2>My Resume</h2>
+        <p>Click the button below to download my resume:</p>
+        <a href="OSHO PANDEY (5).pdf" download>
+          <button>Download Resume (PDF)</button>
+        </a>
+      </section>
+      
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info-card">
+                <h3>Contact Information</h3>
+                <div class="contact-info-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span>Kaimur Bhabua, Bihar</span>
+                </div>
+                <div class="contact-info-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <span>+91 7667515387</span>
+                </div>
+                <div class="contact-info-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span>oshopandey78@gmail.com</span>
+                </div>
+                <div class="contact-info-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6
